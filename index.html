@@ -1,0 +1,240 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Year Surprise for Priya ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* ===== SCANNER ===== */
+#scanner{
+    width:100%;
+    max-width:400px;
+    text-align:center;
+    padding:20px;
+}
+
+#scanner p{
+    margin-top:8px;
+    opacity:.9;
+}
+
+.scanner-box{
+    width:70vw;
+    max-width:250px;
+    aspect-ratio:1/1;
+    border:3px solid #00ffcc;
+    border-radius:14px;
+    position:relative;
+    margin:20px auto;
+    overflow:hidden;
+    box-shadow:0 0 20px #00ffcc;
+}
+
+.scan-line{
+    width:100%;
+    height:5px;
+    background:#00ffcc;
+    position:absolute;
+    top:0;
+    animation:scan 2s infinite;
+}
+
+@keyframes scan{
+    0%{top:0;}
+    100%{top:100%;}
+}
+
+button{
+    padding:14px 28px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff0080,#ff8c00);
+    color:white;
+    cursor:pointer;
+    width:80%;
+    max-width:250px;
+    box-shadow:0 0 15px rgba(255,0,128,.7);
+}
+
+/* ===== CARD ===== */
+#card{
+    display:none;
+    width:100%;
+    padding:20px;
+    text-align:center;
+}
+
+.card-box{
+    background:rgba(255,255,255,0.12);
+    padding:28px;
+    border-radius:22px;
+    box-shadow:0 0 40px rgba(255,0,128,.6);
+    max-width:420px;
+    margin:auto;
+}
+
+.card-box img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #ffb6c1;
+    margin-bottom:10px;
+}
+
+.caption{
+    font-size:.9em;
+    opacity:.85;
+}
+
+h1{
+    font-size:clamp(1.7rem,5vw,2.4rem);
+    color:#ffb6c1;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #ff69b4;}
+    to{text-shadow:0 0 25px #ff1493;}
+}
+
+p{
+    font-size:clamp(.95rem,3.5vw,1.1rem);
+    margin-top:15px;
+    line-height:1.65;
+}
+
+/* ===== FLOATING HEARTS ===== */
+.heart{
+    position:absolute;
+    bottom:-30px;
+    font-size:18px;
+    animation:floatUp linear forwards;
+}
+
+/* ===== FLOATING BUTTERFLIES ===== */
+.butterfly{
+    position:absolute;
+    bottom:-40px;
+    font-size:22px;
+    animation:flyUp linear forwards;
+}
+
+/* HEART ANIMATION */
+@keyframes floatUp{
+    from{transform:translateY(0) scale(1);opacity:1;}
+    to{transform:translateY(-120vh) scale(1.3);opacity:0;}
+}
+
+/* BUTTERFLY ANIMATION */
+@keyframes flyUp{
+    0%{transform:translate(0,0) rotate(0deg);opacity:1;}
+    50%{transform:translate(40px,-60vh) rotate(20deg);}
+    100%{transform:translate(-40px,-120vh) rotate(-20deg);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCANNER -->
+<div id="scanner">
+    <h2>Scan to Reveal 💖</h2>
+    <p>A little scan… a lot of love ✨</p>
+
+    <div class="scanner-box">
+        <div class="scan-line"></div>
+    </div>
+
+    <button onclick="revealCard()">Start Scan</button>
+</div>
+
+<!-- CARD -->
+<div id="card">
+    <div class="card-box">
+        <img src="priya.jpg" alt="Priya">
+        <div class="caption">✨ My favorite smile ✨</div>
+
+        <h1>🎉 Happy New Year Priya ❤️</h1>
+
+        <p>
+            My beautiful Priya,<br><br>
+            You are my happiness, my calm, and my biggest blessing.
+            Every moment with you feels magical, and every smile of yours
+            makes my world brighter. 💖<br><br>
+
+            May this New Year bring us closer,
+            fill our days with laughter,
+            and our hearts with endless love. 🦋❤️<br><br>
+
+            I choose you today, tomorrow, and always.
+        </p>
+    </div>
+</div>
+
+<!-- 🎵 SONG -->
+<iframe id="song" width="0" height="0" allow="autoplay"></iframe>
+
+<script>
+function revealCard(){
+    document.getElementById("scanner").style.display="none";
+    document.getElementById("card").style.display="block";
+
+    // Play song
+    document.getElementById("song").src =
+      "https://www.youtube.com/embed/5E9rYg5z0FY?autoplay=1&loop=1&playlist=5E9rYg5z0FY";
+
+    startHearts();
+    startButterflies();
+}
+
+/* HEARTS */
+function startHearts(){
+    setInterval(()=>{
+        const h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="❤️";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=(Math.random()*15+15)+"px";
+        h.style.animationDuration=(Math.random()*3+4)+"s";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),8000);
+    },350);
+}
+
+/* BUTTERFLIES */
+function startButterflies(){
+    setInterval(()=>{
+        const b=document.createElement("div");
+        b.className="butterfly";
+        b.innerHTML="🦋";
+        b.style.left=Math.random()*100+"vw";
+        b.style.fontSize=(Math.random()*15+18)+"px";
+        b.style.animationDuration=(Math.random()*4+5)+"s";
+        document.body.appendChild(b);
+        setTimeout(()=>b.remove(),9000);
+    },1200);
+}
+</script>
+
+</body>
+</html>
